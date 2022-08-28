@@ -2,7 +2,6 @@
   "name": "jhunt-client",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://crazyreborn.github.io/jhunt-client",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -17,8 +16,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build",
+
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
