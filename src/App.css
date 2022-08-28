@@ -1,0 +1,21 @@
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('./fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Gothic A1';
+  src: url('./fonts/GothicA1-Regular.ttf');
+}

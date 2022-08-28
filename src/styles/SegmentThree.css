@@ -1,0 +1,20 @@
+@media (max-width: 790px) {
+  .segment-three {
+    display: flex;
+    margin: 10% 5% 0%;
+    flex-direction: column;
+  }
+  .segment-three > .primary-content {
+    width: 100%;
+  }
+}
+
+.segment-three {
+  display: flex;
+  margin: 10% 5% 0%;
+  min-height: 80vh;
+}
+
+.primary-content {
+  width: 50%;
+}

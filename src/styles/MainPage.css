@@ -1,0 +1,29 @@
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.outlet {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  min-height: max-content;
+}
+
+.outlet > .btn-action {
+  margin: 2rem auto 1rem;
+}
+
+@media screen and (max-width: 1210px) {
+  .mainContent {
+    flex-direction: column;
+    padding: 0.5em;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .mainContent {
+    padding: 0;
+  }
+}

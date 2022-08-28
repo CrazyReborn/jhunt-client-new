@@ -1,0 +1,100 @@
+.new-application-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.new-application {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0 auto;
+  padding: 1em 2em 1em;
+  width: 30em;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.new-application > label {
+  font-size: 18px;
+  text-align: left;
+  margin: 1em 0 0;
+}
+
+.new-application > label > input {
+  width: 100%;
+  font-size: 18px;
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid blue;
+  padding: 0;
+}
+
+.new-application > label > input:focus {
+  border-radius: 0;
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid blue !important;
+  padding: 0;
+}
+
+.new-application > label > select {
+  width: 100%;
+  font-size: 18px;
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid blue;
+  background-color: white;
+  padding: 0;
+  margin: 0.75em 0 0.75em;
+}
+
+.new-application > label > select:focus {
+  border-radius: 0;
+  outline: none;
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid blue !important;
+  padding: 0;
+}
+
+.new-application > label > select > option {
+  border: 1px solid blue;
+}
+
+.new-application > input[type="submit"] {
+  margin: 0.75em 0 0;
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.new-application-close {
+  align-self: center;
+  cursor: pointer;
+}
+
+.sub-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.errors > p {
+  width: max-content;
+}

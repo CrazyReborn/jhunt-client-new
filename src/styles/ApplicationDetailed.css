@@ -1,0 +1,80 @@
+.detailed {
+  align-self: flex-start;
+  margin: 5% 0 5% 5%;
+  width: 50%;
+}
+
+.detailed > h2 {
+  font-size: 2.5em;
+}
+
+.detailed > p {
+  font-size: 1.5em;
+}
+
+.detailed > p > a:link {
+  color: blue;
+}
+
+.detailed > p > a:visited {
+  color: blue;
+}
+
+.application-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+}
+
+.btn-update {
+  margin-top: 0;
+  padding: 0.5em 2em 0.5em;
+  font-size: 18px;
+  border: none;
+  background-color: blue;
+  color: white;
+}
+
+.btn-delete {
+  margin-top: 0;
+  padding: 0.5em 2em 0.5em;
+  font-size: 18px;
+  border: none;
+  background-color: rgb(167, 0, 14);
+  color: white;
+}
+
+.btn-update:hover, .btn-delete:hover {
+  cursor: pointer;
+}
+
+.container-detailed {
+  display: flex;
+}
+
+#canvasjs-react-chart-container-0 {
+  width: 50%;
+}
+
+@media screen and (max-width: 1442px) {
+  .container-detailed {
+    flex-direction: column;
+  }
+
+  #canvasjs-react-chart-container-0 {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .detailed {
+    margin: 1%;
+    width: auto;
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .detailed {
+    font-size: 0.8em;
+  }
+}

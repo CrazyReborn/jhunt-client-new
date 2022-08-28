@@ -1,0 +1,57 @@
+.interviewGeneralItem {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 0.5rem 1rem 0.5rem;
+}
+
+.upcomingInterviews {
+  padding: 1rem auto 1rem;
+  margin: 0 auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(min-content, auto));
+  gap: 10px;
+}
+
+.upcomingInterviews h3 {
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+@media screen and (max-width: 1325px) {
+  .upcomingInterviews {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, auto));
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .upcomingInterviews {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, auto));
+  }
+}
+
+.finishedInterviews {
+  padding: 1rem auto 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(min-content, 0.25fr));
+  gap: 10px;
+}
+
+.finishedInterviews h3 {
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+@media screen and (max-width: 1325px) {
+  .finishedInterviews {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, auto));
+  }
+}
+
+@media screen and (max-width: 1065px) {
+  .finishedInterviews {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, auto));
+  }
+}

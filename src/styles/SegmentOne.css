@@ -1,0 +1,81 @@
+@media (max-width: 790px) {
+  .segment-one {
+    display: flex;
+    margin: 10% 5% 0%;
+    flex-direction: column;
+  }
+  .segment-one > .primary-content {
+    width: 100%;
+  }
+}
+
+.segment-one {
+  margin: 10% 5% 0%;
+  min-height: 80vh;
+  display: flex;
+}
+
+h1 {
+  font-size: 78px;
+  font-weight: 400;
+  font-family: 'Merriweather', serif;
+}
+
+p {
+  font-size: 28px;
+  font-weight: 100;
+  font-family: Arial, sans-serif;
+}
+
+.btn-action {
+  position: relative;
+  font-size: 36px;
+  border: none;
+  outline: none;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  width: fit-content;
+  
+}
+
+.btn-action > .btn-text {
+  transition: all 0.2s;
+}
+
+.btn-action:hover {
+  cursor: pointer;
+}
+
+.btn-action.loading > .btn-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn-action.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  border: 5px solid transparent;
+  border-top-color: #000000;
+  border-radius: 50%;
+  animation: btn-action-loading-spinner 1s ease infinite;
+}
+
+@keyframes btn-action-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.primary-content {
+  width: 50%;
+}
