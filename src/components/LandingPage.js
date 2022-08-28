@@ -17,6 +17,7 @@ export default function LandingPage() {
         }
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log(err);
         navigate('/signin');
       });
