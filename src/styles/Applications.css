@@ -71,3 +71,12 @@ tr:after {
     display: none;
   }
 }
+
+.filter {
+  width: 20%;
+  margin-left: 12em;
+}
+
+h2.total {
+  margin-left: 6.5em;
+}

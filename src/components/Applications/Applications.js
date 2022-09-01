@@ -12,6 +12,7 @@ export default function Applications({ rerender }) {
   const [gotErr, setGotErr] = useState(false);
   const [salaryUsrAvg, setSalaryUsrAvg] = useState(0);
   const [salaryAllAvg, setSalaryAllAvg] = useState(0);
+  const [filter, setFilter] = useState('');
 
   function calculateAvgSalary() {
     const count = applications.length;
@@ -23,33 +24,35 @@ export default function Applications({ rerender }) {
   }
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.applications === undefined) {
-          setErrors(json.err.errors);
-        } else {
-          setApplications(json.applications);
-        }
-        setSalaryAllAvg(json.averagesAll[0].avg);
-        setGotErr(errors.length > 0);
+    if (!loaded) {
+      fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
+        method: 'GET',
+        credentials: 'include',
       })
-      .catch((err) => {
-        setErrors(['There was an error while fetching data: ', err]);
-      })
-      .finally(() => {
-        setLoaded(true);
-      });
-  }, [rerender]);
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.applications === undefined) {
+            setErrors(json.err.errors);
+          } else {
+            setApplications(json.applications);
+          }
+          setSalaryAllAvg(json.averagesAll[0].avg);
+          setGotErr(errors.length > 0);
+        })
+        .catch((err) => {
+          setErrors(['There was an error while fetching data: ', err]);
+        })
+        .finally(() => {
+          setLoaded(true);
+        });
+    }
+  }, [rerender, loaded]);
 
   useEffect(() => {
     calculateAvgSalary();
   }, [loaded]);
 
-  if (loaded && applications.length > 0) {
+  if (loaded && applications.length === 0) {
     return (
       <div className="no-yet">
         <p>No applications have been added yet</p>
@@ -61,6 +64,12 @@ export default function Applications({ rerender }) {
     loaded
       ? (
         <>
+          <h2 className="total">
+            Total applications:
+            {' '}
+            {applications.length - 1}
+          </h2>
+          <input className="filter" type="text" onChange={(e) => setFilter(e.target.value.toLowerCase())} />
           <div className="applications">
             <table className="application">
               <thead>
@@ -74,14 +83,30 @@ export default function Applications({ rerender }) {
               </thead>
               <tbody>
                 {applications.sort((prev, next) => (new Date(next.date) - new Date(prev.date)))
-                  .map((application) => (
-                    <ApplicationGeneral
-                      key={application._id}
-                      application={application}
-                      salaryUsrAvg={salaryUsrAvg}
-                      salaryAllAvg={salaryAllAvg}
-                    />
-                  ))}
+                  .map((application) => {
+                    const cn = application.company_name.toLowerCase();
+                    if (filter !== '') {
+                      if (cn.includes(filter)) {
+                        return (
+                          <ApplicationGeneral
+                            key={application._id}
+                            application={application}
+                            salaryUsrAvg={salaryUsrAvg}
+                            salaryAllAvg={salaryAllAvg}
+                          />
+                        );
+                      }
+                      return null;
+                    }
+                    return (
+                      <ApplicationGeneral
+                        key={application._id}
+                        application={application}
+                        salaryUsrAvg={salaryUsrAvg}
+                        salaryAllAvg={salaryAllAvg}
+                      />
+                    );
+                  })}
               </tbody>
             </table>
           </div>
