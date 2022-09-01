@@ -67,7 +67,7 @@ export default function Applications({ rerender }) {
           <h2 className="total">
             Total applications:
             {' '}
-            {applications.length - 1}
+            {applications.length}
           </h2>
           <input className="filter" type="text" onChange={(e) => setFilter(e.target.value.toLowerCase())} />
           <div className="applications">
