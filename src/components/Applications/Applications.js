@@ -24,28 +24,27 @@ export default function Applications({ rerender }) {
   }
 
   useEffect(() => {
-    if (!loaded) {
-      fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
-        method: 'GET',
-        credentials: 'include',
+    fetch(`${process.env.REACT_APP_API_SERVER}applications`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.applications === undefined) {
+          setErrors(json.err.errors);
+        } else {
+          setApplications(json.applications);
+        }
+        setSalaryAllAvg(json.averagesAll[0].avg);
+        setGotErr(errors.length > 0);
       })
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.applications === undefined) {
-            setErrors(json.err.errors);
-          } else {
-            setApplications(json.applications);
-          }
-          setSalaryAllAvg(json.averagesAll[0].avg);
-          setGotErr(errors.length > 0);
-        })
-        .catch((err) => {
-          setErrors(['There was an error while fetching data: ', err]);
-        })
-        .finally(() => {
-          setLoaded(true);
-        });
-    }
+      .catch((err) => {
+        console.log(err);
+        setErrors(['There was an error while fetching data: ', err]);
+      })
+      .finally(() => {
+        setLoaded(true);
+      });
   }, [rerender, loaded]);
 
   useEffect(() => {
@@ -64,12 +63,14 @@ export default function Applications({ rerender }) {
     loaded
       ? (
         <>
-          <h2 className="total">
-            Total applications:
-            {' '}
-            {applications.length}
-          </h2>
-          <input className="filter" type="text" onChange={(e) => setFilter(e.target.value.toLowerCase())} />
+          <div className="top-search">
+            <h2 className="total">
+              Total applications:
+              {' '}
+              {applications.length}
+            </h2>
+            <input className="filter" type="text" onChange={(e) => setFilter(e.target.value.toLowerCase())} />
+          </div>
           <div className="applications">
             <table className="application">
               <thead>

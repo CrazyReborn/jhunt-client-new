@@ -72,11 +72,15 @@ tr:after {
   }
 }
 
+.top-search {
+  width: 80%;
+  margin: 1rem auto;
+}
+
 .filter {
-  width: 20%;
-  margin-left: 12em;
+  width: 30%;
+  min-width: 250px;
 }
 
 h2.total {
-  margin-left: 6.5em;
 }
